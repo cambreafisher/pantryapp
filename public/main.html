@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
-    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="">
+    <script src="food.js"></script>
 </head>
 <body>
+    <div id="mainPage">
     <h1>Organize</h1>
     <h1>Your</h1>
     <h1>Stomach</h1>
@@ -25,10 +26,11 @@
                     </form>
 </div>
                  <form action="/shopping" method="GET"><button class="open-button" type="submit">Shopping List</button></form> 
-                <form action="/pantry" method="GET"><button class="open-button" type="submit">View Pantry</button></form>
+                <button class="open-button" onclick="getPantryList()">View Pantry</button>
         
     </div>
-    
+</div>
+    <ul id="pantryresults"></ul>
     <script>
     function openForm() {
         document.getElementById("myForm").style.display = "block";
