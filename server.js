@@ -22,11 +22,11 @@ app.set("views", "views");
 app.set("view engine", "ejs");
 
 //set up controllers
-const controller = require('./controllers/foodController.js');
+const foodController = require('./controllers/foodController.js');
 
 /*************** Endpoints */
 //all the food in the pantry
-app.get('/pantry', controller.getAllFood);
+app.get('/pantry', foodController.getAllFood);
 
 //get - all the food for a specific user
 
@@ -39,7 +39,7 @@ app.get('/pantry', controller.getAllFood);
 //get - all the food that has expired
 
 //get - all the food that will expire in the next week
-
+app.get('/expiringFood', foodController.getExpiringFood);
 
 //get - search for a specific food
 

@@ -13,25 +13,28 @@ function getAllFood(callback) {
             callback(err, null);
         } else {
             callback(null, result.rows);
-            /*
-            const food = result.rows;
-            //this just prints out the endpoint
-            response.json(result.rows);
-        */
-        
-            //console.log(food);
+        }
+    });
+}
 
-        //console.log(params);
-        //what we could do is just do the json endpoint and then have another 
-        //another file that connects to said endpoint
-        //is there a way to both create the endpoint and call the function so it will display the results?
-
-        //response.render("foodresult", result);
-        
+function getExpiringFood(callback) {
+    console.log('getting the expiring food');
+    const id = 1;
+    var currentDate = new Date();
+    currentDate.setDate(currentDate.getDate()+7);
+    console.log(currentDate);
+   
+    pool.query('SELECT food_name, expiration_date from FOOD WHERE user_id = $1 AND expiration_date <= $2', [id, currentDate], (err, result) => {
+        if (err) {
+            callback(err, null);
+        } else {
+            console.log('got stuff from database');
+            callback(null, result.rows);
         }
     });
 }
 
 module.exports = {
-    getAllFood: getAllFood
+    getAllFood: getAllFood,
+    getExpiringFood: getExpiringFood
 }

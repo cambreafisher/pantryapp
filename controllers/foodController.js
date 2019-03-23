@@ -4,23 +4,19 @@
 const model = require("../models/foodModel.js");
 
 function getAllFood(request, response) {
-
     model.getAllFood(function(err, food) {
-        if(err) {
-            const data = {
-                success: false, 
-                message: err
-            };
-            response.status(500).json(data);
-        } else {
-            const data = {
-                food: food
-            };
-            response.json(data);
-        }
+      response.json(food);
+    });
+}
+
+function getExpiringFood(request, response) {
+    
+    model.getExpiringFood(function(err, food) {
+        response.json(food);
     });
 }
 
 module.exports = {
-    getAllFood: getAllFood
+    getAllFood: getAllFood,
+    getExpiringFood: getExpiringFood
 }

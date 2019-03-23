@@ -5,16 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
     <script src="food.js"></script>
 </head>
 <body>
     <div id="mainPage">
-    <h1>Organize</h1>
-    <h1>Your</h1>
-    <h1>Stomach</h1>
-    <div id="buttons">
-        
+        <div class="square">
+            <h1>Organize</h1>
+            <h1>Your</h1>
+            <h1>Stomach</h1>
+        </div>
+        <div class="square expiredFood" onload="getExpiringFood()">
+            <h3>EXPIRING - </h3>
+            <ul id="expiredresults"></ul>
+        </div>
+            <div class="square buttons">
                  <button class="open-button" onclick="openForm()">Add Food</button>
                  <div class="form-popup" id="myForm">
                      <form action="additem" method="POST" class="form-container">
@@ -24,13 +29,16 @@
                          <input type="text" name="expires"><br>
                          <button type="submit" class="submit-button">Add</button>
                     </form>
-</div>
+                </div>
                  <form action="/shopping" method="GET"><button class="open-button" type="submit">Shopping List</button></form> 
                 <button class="open-button" onclick="getPantryList()">View Pantry</button>
-        
+            </div>
     </div>
-</div>
-    <ul id="pantryresults"></ul>
+
+    <div id="pantryPage">
+        <ul id="pantryresults"></ul>
+    </div>
+
     <script>
     function openForm() {
         document.getElementById("myForm").style.display = "block";

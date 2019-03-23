@@ -1,0 +1,55 @@
+body {
+    font-family: century gothic;
+    font-size: 25px;
+    background-image: url('rawfood2\ copy.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+input {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+.open-button {
+    
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    position: static;
+    opacity: 0.8;
+    bottom: 23px;
+    right: 28px;
+    width: 280px;
+    margin-bottom: 10%;
+    background-color: #ef413b;
+}
+
+.form-popup {
+    display: none;
+    bottom: 0;
+    right: 15px;
+    position: static;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+}
+
+.form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+}
+.square {
+    float:left;
+    background-color: aliceblue;
+    opacity: 0.6;
+    padding: 2%;
+    position: relative;
+    width: 30%;
+    padding-bottom : 30%; /* = width for a 1:1 aspect ratio */
+    margin:1.66%;
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:cover; /* you change this to "contain" if you don't want the images to be cropped */
+}
+
