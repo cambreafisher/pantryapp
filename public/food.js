@@ -18,7 +18,7 @@ function updatePantryList(data) {
     hide.style.display = "none";
    
     const listElement = document.getElementById('pantryresults');
-    data.food.forEach(element => {
+    data.forEach(element => {
         listElement.appendChild(renderPantry(element));
         //`<h1>${element.food_name}</h1>`;
     });
@@ -49,7 +49,8 @@ function getExpiringFood() {
 }
 function updateExpiredList(data) {
 const listElement = document.getElementById('expiredresults');
-    data.food.forEach(element => {
+console.log('before for each');
+    data.forEach(element => {
         listElement.appendChild(renderExpired(element));
         //`<h1>${element.food_name}</h1>`;
     });
@@ -60,6 +61,9 @@ const listElement = document.getElementById('expiredresults');
 
 function renderExpired(element) {
     const item = document.createElement('li');
-    item.innerHTML = `<p>${element.food_name}  -  ${element.expiration_date}</p>`;
+    var date = new Date(element.expiration_date);
+    var dateString = date.toDateString();
+    console.log('about to add it to innerHTML');
+    item.innerHTML = `<p>${element.food_name}  -  ${dateString}</p>`;
     return item;
 }

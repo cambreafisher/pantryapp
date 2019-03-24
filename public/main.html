@@ -8,16 +8,12 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
     <script src="food.js"></script>
 </head>
-<body>
+<body onload="getExpiringFood()">
     <div id="mainPage">
         <div class="square">
             <h1>Organize</h1>
             <h1>Your</h1>
             <h1>Stomach</h1>
-        </div>
-        <div class="square expiredFood" onload="getExpiringFood()">
-            <h3>EXPIRING - </h3>
-            <ul id="expiredresults"></ul>
         </div>
             <div class="square buttons">
                  <button class="open-button" onclick="openForm()">Add Food</button>
@@ -33,6 +29,10 @@
                  <form action="/shopping" method="GET"><button class="open-button" type="submit">Shopping List</button></form> 
                 <button class="open-button" onclick="getPantryList()">View Pantry</button>
             </div>
+    </div>
+    <div class="square expiredFood" >
+            <h3>EXPIRING - </h3>
+            <ul id="expiredresults"></ul>
     </div>
 
     <div id="pantryPage">
