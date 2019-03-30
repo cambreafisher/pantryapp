@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Organize Your Stomach</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
     <script src="food.js"></script>
@@ -18,25 +19,30 @@
             <div class="square buttons">
                  <button class="open-button" onclick="openForm()">Add Food</button>
                  <div class="form-popup" id="myForm">
-                     <form action="additem" method="POST" class="form-container">
+                     <form class="form-container">
                          <label for="foodname"><b>Food</b></label><br>
-                         <input type="text" name="foodname"><br>
+                         <input type="text" name="foodname" id="foodname"><br>
                          <label for="expires"><b>Expiration Date</b></label>
-                         <input type="text" name="expires"><br>
-                         <button type="submit" class="submit-button">Add</button>
+                         <input type="text" name="expires" id="expires" placeholder="yyyy-mm-dd"><br>
+                         <button onclick="addFood();">Add</button>
+                         <div id="status"></div>
                     </form>
                 </div>
-                 <form action="/shopping" method="GET"><button class="open-button" type="submit">Shopping List</button></form> 
+                <button class="open-button" onclick="getShopping()">Shopping List</button>
                 <button class="open-button" onclick="getPantryList()">View Pantry</button>
             </div>
-    </div>
+    
     <div class="square expiredFood" >
             <h3>EXPIRING - </h3>
             <ul id="expiredresults"></ul>
     </div>
-
-    <div id="pantryPage">
+</div>
+    <div id="pantryPage" class="square" hidden="true">
         <ul id="pantryresults"></ul>
+    </div>
+
+    <div id="shoppingPage" class="square" hidden ="true">
+        <ul id="shoppingresults"></ul>
     </div>
 
     <script>

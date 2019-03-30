@@ -1,5 +1,8 @@
 //this file connects to the endpoint from the client 
 //side to get the information
+/**************
+ * getPantryList
+ */
 function getPantryList() {
     const url = "/pantry";
     
@@ -16,6 +19,8 @@ function updatePantryList(data) {
     //hiding the main page
     let hide = document.getElementById('mainPage');
     hide.style.display = "none";
+    let show = document.getElementById('pantryPage');
+   show.style.display = "block";
    
     const listElement = document.getElementById('pantryresults');
     data.forEach(element => {
@@ -32,7 +37,9 @@ function renderPantry(element) {
     return item;
 }
 
-/***************** */
+/***************** 
+ * getExpiringFood
+*/
 function getExpiringFood() {
     const url = "/expiringFood";
 
@@ -43,8 +50,6 @@ function getExpiringFood() {
     .then(function(data) {
         updateExpiredList(data);
     });
-
-
     console.log()
 }
 function updateExpiredList(data) {
@@ -67,3 +72,67 @@ function renderExpired(element) {
     item.innerHTML = `<p>${element.food_name}  -  ${dateString}</p>`;
     return item;
 }
+
+/**************
+ * getShopping List 
+ */
+function getShopping() {
+    const url = "/shopping";
+
+    fetch(url)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        updateShoppingList(data);
+    });
+    console.log()
+}
+
+function updateShoppingList(data) {
+    //make sure the right elements are showing: main page is hidden, shopping is not
+    let hide = document.getElementById('mainPage');
+    hide.style.display = "none";
+   let show = document.getElementById('shoppingPage');
+   show.style.display = "block";
+
+    const listElement = document.getElementById('shoppingresults');
+    data.forEach(element => {
+        listElement.appendChild(renderShopping(element));
+        //`<h1>${element.food_name}</h1>`;
+    });
+    console.log('updateShoppingList');
+    console.log(data);
+}
+
+function renderShopping(element) {
+    const item = document.createElement('li');
+    item.innerHTML = `<p>${element.food_name}  -  ${element.quantity}</p>`;
+    return item;
+}
+/*************
+ * Add Food
+ */
+function addFood() {
+
+    var foodname = $("#foodname").val();
+    var expires = $("#expires").val();
+    //checkValidDate(expires);
+
+    var params = {
+        foodname: foodname,
+        expires: expires
+    };
+
+    $.post("/addFood", params, function(result) {
+        if(result && result.success) {
+            $("#status").text("Success");
+        }else {
+            $("#status").text("Fail");
+        }
+    });
+}
+function checkValidDate(expires) {
+
+}
+//insert in sql, then all you need to do is send the data from the front end to the back end

@@ -34,7 +34,40 @@ function getExpiringFood(callback) {
     });
 }
 
+function getShopping(callback) {
+    console.log('getting shopping list');
+    const id = 1;
+    
+    pool.query('SELECT food_name, quantity from SHOPPING WHERE user_id = $1', [id], (err, result) => {
+        if (err) {
+            callback(err, null);
+        } else {
+            console.log('got shopping from database');
+            callback(null, result.rows);
+        }
+    });
+}
+
+function addFood(foodname, expires, callback) {
+
+    console.log(foodname);
+    console.log(expires);
+    console.log('inserting food');
+    const id = 1;
+
+    pool.query('INSERT INTO FOOD(food_name, expiration_date, user_id) VALUES($1, $2, $3)', [foodname, expires, id], (err, result) => {
+        if (err) {
+            callback(err, null);
+        } else {
+            console.log('inserting food');
+            callback(null, result.rows);
+        }
+    })
+}
+
 module.exports = {
     getAllFood: getAllFood,
-    getExpiringFood: getExpiringFood
+    getExpiringFood: getExpiringFood,
+    getShopping: getShopping,
+    addFood: addFood
 }

@@ -12,7 +12,7 @@ const connectionString = process.env.DATABASE_URL || "postgres://owkdcdmkgyxzjs:
 const { Pool } = require('pg');
 const pool = new Pool({connectionString: connectionString});
 
-//idk
+//the json and urlencoded are for post values
 app.use(express.static('public'));
 app.use(express.json());       // to support JSON-encoded bodies
 app.use(express.urlencoded()); // to support URL-encoded bodies
@@ -30,7 +30,8 @@ app.get('/pantry', foodController.getAllFood);
 
 //get - all the food for a specific user
 
-//get - all the food in a shopping list
+//get - all the food in the shopping list
+app.get('/shopping', foodController.getShopping);
 
 //get - all the lists
 
@@ -44,6 +45,9 @@ app.get('/expiringFood', foodController.getExpiringFood);
 //get - search for a specific food
 
 //post - adding a food item to the pantry
+app.post('/addFood', foodController.addFood);
+
+//post - removing a food item from the pantry
 
 //post - creating a list
 
