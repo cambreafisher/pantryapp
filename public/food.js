@@ -118,11 +118,9 @@ function renderShopping(element) {
  */
 function addFood() {
 
-    // var foodname = $("#foodname").val();
-    // var expires = $("#expires").val();
+    var foodname = $("#foodname").val();
+    var expires = $("#expires").val();
     //checkValidDate(expires);
-    var foodname = "Yellow Cake Mix"
-    var expires = "2020-09-24T00:00:00.000Z"
 
     var params = {
         foodname: foodname,
@@ -156,11 +154,13 @@ function removeFood(event) {
     $.post("/removeFood", params, function(result) {
         if(result && result.success) {
             $("#status").text("Success");
+            getPantryList();
+            console.log("rerendered the page");
         } else {
             $("#status").text("Fail");
         }
     });
     console.log("before calling the getPantryList to rerender")
-    getPantryList();
-    console.log("rerendered the page");
+    
+    
 }
