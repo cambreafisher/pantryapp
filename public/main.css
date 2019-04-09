@@ -1,10 +1,26 @@
-body {
-    font-family: century gothic;
-    font-size: 25px;
-    background-image: url('rawfood2\ copy.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+/****************large devices*******************/
+@media screen and (max-width: 1100px) {
+    body {
+        font-family: century gothic;
+        font-size: 25px;
+        background-image: url('rawfood2\ copy.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .square-main {
+        float:left;
+        background-color: aliceblue;
+        opacity: 0.6;
+        padding: 2%;
+        position: relative;
+        width: 40%;
+        /*padding-bottom : 30%; /* = width for a 1:1 aspect ratio */
+        margin:1.66%;
+        background-position:center center;
+        background-repeat:no-repeat;
+        background-size:cover; 
+    }
 
 input {
     border: 1px solid #ccc;
@@ -52,4 +68,29 @@ input {
     background-repeat:no-repeat;
     background-size:cover; /* you change this to "contain" if you don't want the images to be cropped */
 }
+}
 
+
+/***********for small devices************/
+@media screen and (max-width: 767px) {
+   body {
+   }
+    .square {
+       float: left;
+       background-color: aliceblue;
+       opacity: 0.6;
+       padding: 2%;
+       width: 85%;
+       margin: 1.66%;
+       font-size: 5vw;
+   }
+   .square-main {
+       float: left;
+       background-color: aliceblue;
+       opacity: 0.6;
+       padding: 2%;
+       width: 85%;
+       margin: 1.66%;
+       font-size: 8vw;
+   }
+}

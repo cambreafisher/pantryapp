@@ -47,7 +47,14 @@ app.get('/expiringFood', foodController.getExpiringFood);
 //post - adding a food item to the pantry
 app.post('/addFood', foodController.addFood);
 
+//post - add item to the shopping
+
+
 //post - removing a food item from the pantry
+app.post('/removeFood', foodController.removeFood);
+
+//post - removing a food item from the shopping
+//app.post('/removeShopping', foodController.removeShopping);
 
 //post - creating a list
 

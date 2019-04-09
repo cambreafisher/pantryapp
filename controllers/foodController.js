@@ -21,7 +21,7 @@ function getShopping(request, response) {
         response.json(food);
     });
 }
-
+/*************Post */
 function addFood(request, response) {
     var foodname = request.body.foodname;
     var expires = request.body.expires;
@@ -31,9 +31,22 @@ function addFood(request, response) {
     });
 }
 
+function removeFood(request, response) {
+    var foodname = request.body.foodname;
+    var expires = request.body.expires;
+    console.log(foodname)
+    console.log("removeFood controller");
+    model.removeFood(foodname, expires, function(foodname, err, results) {
+        response.json(results)
+    });
+}
+
+
+
 module.exports = {
     getAllFood: getAllFood,
     getExpiringFood: getExpiringFood,
     getShopping: getShopping,
-    addFood: addFood
+    addFood: addFood,
+    removeFood: removeFood
 }

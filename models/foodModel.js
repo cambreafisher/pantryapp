@@ -65,9 +65,27 @@ function addFood(foodname, expires, callback) {
     })
 }
 
+function removeFood(foodname, expires, callback) {
+
+    console.log(foodname);
+    console.log(expires);
+    console.log("removing food model")
+    const id = 1;
+
+    pool.query('DELETE FROM FOOD WHERE food_name = $1 AND expiration_date = $2 AND user_id= $3', [foodname, expires, id], (err, result) => {
+        if (err) {
+            callback(err, null);
+        } else {
+            console.log('removing food in model after database request');
+            callback(null, result.rows);
+        }
+    })
+}
+
 module.exports = {
     getAllFood: getAllFood,
     getExpiringFood: getExpiringFood,
     getShopping: getShopping,
-    addFood: addFood
+    addFood: addFood,
+    removeFood: removeFood
 }
